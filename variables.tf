@@ -32,3 +32,8 @@ variable "project" {
     description = "The name of the project"
     default = "rentalcars"
 }
+
+variable "admin_sql_password" {
+    type = string
+    description = "The password for the SQL admin user"
+}
