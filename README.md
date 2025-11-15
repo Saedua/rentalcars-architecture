@@ -2,7 +2,7 @@
 
 ## Diagrama de la arquitectura
 
-![Diagrama la arquitectura](diagrama.png)
+![Diagrama la arquitectura](images/diagrama.png)
 
 ## Justificacion de los servicios
 
@@ -27,9 +27,20 @@ Se eligio Azure Key Vault como servicio para gestion de secretos debido a su cap
 
 ## Capturas de Pantalla
 
+#### Ultimo "terraform apply" hecho de forma exitosa
+![Terraform apply](images/terraformapply.png)
+
+Se aplicaron varios terraform apply segun se iba creando el proyecto, algunos fracasaban al necesitarse mas configuraciones o por dependencias, politicas, etc. Este ultimo terraform apply corresponde a la creacion del Azure Synapse Analytics, especificamente la creacion de una politica de acceso para poder crear la conexion entre Synapse y el Data Lake
+
+#### Grupo de recursos creado
+![Resource group](images/resourcegroup.png)
+
+El grupo de recursos final creado, conforme a la arquitectura planteada para la solucion. 
+
+
 ## Reflexiones finales
 
-- Uno de los problemas principales fue el de control de acceso con el Key Vault. Al tener las conexiones del ADF con DB SQL y Data Lake habia un problema, tambien se debia configurar una conexion y una politica de acceso del ADF con el Key Vault para poder leer la contrasenia que este tenia almacenado. La contrasenia de la DB en un principio estaba hardcodeada, utilizando las variables, pero al querer darle un uso al Key Vault (y por recomendaciones en internet con arquitecturas similares) hice que la leyera de ahi, para luego enterarme que se me habia pasado por alto que se debian configurar conexiones y politicas de acceso entre el ADF y el Key Vault
+- Uno de los problemas principales fue el de control de acceso con el Key Vault. Al configurar el Data Factory para utilizar el Key Vault, nos encontramos con el error de que tambien se debian configurar las conexiones y politicas de acceso del Data Factory al Key Vault. Y tambien varios errores de recursos que se creaban antes de algo que necesitaban, por lo que se agrego la instruccion "depends_on", para que estos se crearan luego de lo que se indicaba.
 
 - Al trabajar en equipo se tuvo problemas con la sincronizacion del archivo terraform.tfstate, ya que tenia el error de mostrar cambios que se iban a aplicar de recursos/servicios ya creados en el grupo de recursos. Para ello se tuvo que crear un servidor llamado tfstate, definido en backend.tf. Gracias a ello y a importar manualmente algunos recursos finales, se logro obtener la sincronizacion del archivo tfstate. Se aprendio la leccion de definir este servidor y la sincronia del tfstate antes de comenzar a trabajar en equipo.
 
