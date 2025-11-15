@@ -8,12 +8,12 @@
 
 ### Base de datos transaccional
 
-Se eligio Azure SQL Database ya que es una base de datos relacional al estar basada en SQL Server. Compatible con herramientas conocidas como SSMS, Azure Data Studio y Visual Studio. Este servicio cifra los datos en reposo automaticamente, brinda cifrado en transito mediante TLS y nos proporciona un firewall para poder restringir el acceso a Ips especificas.
+Se eligio Azure SQL Database ya que es una base de datos relacional al estar basada en SQL Server. Compatible con herramientas conocidas como SSMS, Azure Data Studio y Visual Studio. Este servicio cifra los datos en reposo automaticamente, brinda cifrado en transito mediante TLS y nos proporciona un firewall para poder restringir el acceso a IP's especificas.
 Ademas, nos permite escalar verticalmente y horizontalmente, y tiene una integracion muy buena con otros servicios de Azure.
 
 ### Almacenamiento analitico
 
-Se eligio Azure Data Lake por su capacidad de almacenamiento escalable, su compatibilidad nativa con formatos como JSON y su integracion con el ecosistema analitico de Azure. Ademas, el Data Lake se encuentra conectado tanto con la base de datos transaccional, como con el servicio Azure IoT Hub, a traves de Azure Stream Analytics, permitiendo ingesta continua de datos de telemetria provenientes de los vehiculos.
+Se eligio Azure Data Lake por su capacidad de almacenamiento escalable, su compatibilidad nativa con formatos como JSON y su integracion con el ecosistema analitico de Azure. Ademas, el Data Lake se encuentra conectado tanto con la base de datos transaccional, como con el servicio Azure IoT Hub, permitiendo ingesta continua de datos de telemetria provenientes de los vehiculos.
 
 ### Orquestacion de Datos
 
