@@ -37,3 +37,8 @@ variable "admin_sql_password" {
     type = string
     description = "The password for the SQL admin user"
 }
+
+variable "synapse_admin_password" {
+    type = string
+    description = "The password for the Synapse admin user"
+}
